@@ -15,7 +15,30 @@
 
 void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n) {
 
- // TODO: implement
+    (void)nums1Size;  
+    (void)nums2Size;
+
+    int i = m - 1;        // last real element in nums1
+    int j = n - 1;        // last element in nums2
+    int k = m + n - 1;    // last position in nums1 (write index)
+
+    // Fill nums1 from the back
+    while (j >= 0)
+    {
+        // If nums1 still has elements and it's bigger, place it
+        if (i >= 0 && nums1[i] > nums2[j])
+        {
+            nums1[k] = nums1[i];
+            i--;
+        }
+        else
+        {
+            // Otherwise place from nums2
+            nums1[k] = nums2[j];
+            j--;
+        }
+        k--;
+    }
 
 
 
