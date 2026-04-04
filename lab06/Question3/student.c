@@ -10,4 +10,19 @@
 int has_triangle(Graph* g) {
     // TODO: implement
     // return -1;
+    int i, j, k;
+
+    for (i = 0; i < MAX_NODES; i++) {
+        for (j = i + 1; j < MAX_NODES; j++) {
+            for (k = j + 1; k < MAX_NODES; k++) {
+                if (g->adj[i][j] == 1 &&
+                    g->adj[i][k] == 1 &&
+                    g->adj[j][k] == 1) {
+                    return 1;
+                }
+            }
+        }
+    }
+
+    return 0;
 }
