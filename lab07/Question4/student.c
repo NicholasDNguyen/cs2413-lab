@@ -20,7 +20,23 @@ Notes:
 */
 
 void insertionSort(int arr[], int size) {
-    // TODO: implement insertion sort
-    (void)arr;
-    (void)size;
+    // If the array is empty or has only one element, do nothing
+    if (size <= 1) {
+        return;
+    }
+
+    // Start from the second element because the first element is already "sorted"
+    for (int i = 1; i < size; i++) {
+        int key = arr[i];
+        int j = i - 1;
+
+        // Move elements greater than key one position to the right
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+
+        // Insert key into its correct position
+        arr[j + 1] = key;
+    }
 }
