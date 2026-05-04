@@ -32,9 +32,53 @@ Notes:
 - The sorting should be done in ascending order.
 */
 
+void swap(int arr[], int i, int j) {
+    int temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+
+int partition(int arr[], int low, int high) {
+    // Use the last element as the pivot
+    int pivot = arr[high];
+
+    // i keeps track of the position for smaller elements
+    int i = low - 1;
+
+    // Move elements smaller than or equal to pivot to the left
+    for (int j = low; j < high; j++) {
+        if (arr[j] <= pivot) {
+            i++;
+            swap(arr, i, j);
+        }
+    }
+
+    // Put pivot in its correct sorted position
+    swap(arr, i + 1, high);
+
+    return i + 1;
+}
+
+void quickSortHelper(int arr[], int low, int high) {
+    if (low < high) {
+        // Partition the array and get pivot index
+        int pivotIndex = partition(arr, low, high);
+
+        // Recursively sort left side
+        quickSortHelper(arr, low, pivotIndex - 1);
+
+        // Recursively sort right side
+        quickSortHelper(arr, pivotIndex + 1, high);
+    }
+}
+
 void quickSort(int arr[], int size) {
-    // TODO: implement quick sort
-    (void)arr;
-    (void)size;
+    // If the array is empty or has only one element, do nothing
+    if (size <= 1) {
+        return;
+    }
+
+    // Start quick sort from index 0 to index size - 1
+    quickSortHelper(arr, 0, size - 1);
 }
 
