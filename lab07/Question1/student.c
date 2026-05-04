@@ -29,14 +29,53 @@ Notes:
 */
 
 void bubbleSort(int arr[], int size) {
-    // TODO: implement basic bubble sort
-    (void)arr;
-    (void)size;
+    // If the array is empty or has only one element, do nothing
+    if (size <= 1) {
+        return;
+    }
+
+    // Basic bubble sort
+    for (int i = 0; i < size - 1; i++) {
+
+        // Compare adjacent elements
+        for (int j = 0; j < size - 1 - i; j++) {
+
+            // Swap if they are in the wrong order
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
 }
 
 void bubbleSortOptimized(int arr[], int size) {
-    // TODO: implement optimized bubble sort with early stopping
-    (void)arr;
-    (void)size;
-}
+    // If the array is empty or has only one element, do nothing
+    if (size <= 1) {
+        return;
+    }
 
+    // Optimized bubble sort with early stopping
+    for (int i = 0; i < size - 1; i++) {
+        bool swapped = false;
+
+        // Compare adjacent elements
+        for (int j = 0; j < size - 1 - i; j++) {
+
+            // Swap if they are in the wrong order
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+
+                swapped = true;
+            }
+        }
+
+        // If no swaps happened, the array is already sorted
+        if (swapped == false) {
+            break;
+        }
+    }
+}
