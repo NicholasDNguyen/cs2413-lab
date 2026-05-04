@@ -21,8 +21,28 @@ Notes:
 */
 
 void selectionSort(int arr[], int size) {
-    // TODO: implement selection sort
-    (void)arr;
-    (void)size;
+    // If the array is empty or has only one element, do nothing
+    if (size <= 1) {
+        return;
+    }
+
+    // Move through each position in the array
+    for (int i = 0; i < size - 1; i++) {
+        int minIndex = i;
+
+        // Find the smallest element in the unsorted portion
+        for (int j = i + 1; j < size; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+
+        // Swap the smallest element with the first unsorted element
+        if (minIndex != i) {
+            int temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+    }
 }
 
